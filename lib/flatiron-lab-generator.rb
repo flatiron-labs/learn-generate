@@ -1,4 +1,4 @@
-require "flatiron/lab/generator/version"
+require "flatiron-lab-generator/version.rb"
 
 module FlatironLabGenerator
   def self.testing

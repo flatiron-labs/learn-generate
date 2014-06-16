@@ -1,7 +1,3 @@
-module Flatiron
-  module Lab
-    module Generator
-      VERSION = "0.0.1"
-    end
-  end
+module FlatironLabGenerator
+  VERSION = "0.0.1"
 end
