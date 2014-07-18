@@ -38,4 +38,4 @@ The lab-name refers to the name of the lab (example: Sinatra-ORM-Halloween).
 
 ## Reposit
 
-Logan made an awesome gem that creates a remote git repository. It's called [Reposit](https://github.com/loganhasson/reposit). After installing that and following the setup steps, run `reposit <lab name> -o flatiron-school-curriculum`.
+Logan made an awesome gem that creates a remote git repository from the command line. It's called [Reposit](https://github.com/loganhasson/reposit). After installing that and following the setup steps, run `reposit <lab name> -o flatiron-school-curriculum`.

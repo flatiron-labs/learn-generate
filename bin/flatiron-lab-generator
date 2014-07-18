@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
 require 'flatiron-lab-generator'
-require 'optparse'
 
-OptionParser.new do |opts|
-  
-end
+FlatironLabGenerator::TemplateMaker.run
