@@ -2,17 +2,17 @@
 
 A gem for generating labs in the format/style we use for making labs at the Flatiron School.
 
+## Dependencies
+
+Assumes installation of git. The gem initializes an empty git repository. Make sure you have git installed first before using the gem.
+
 ## Installation
 
 $ gem install flatiron-lab-generator
 
 ## Usage
 
-1. Generate a new personal API key by visiting https://github.com/settings/applications and choosing 'Generate New Token'.
-
-2. `flatiron-lab-generator [lab-type]`
-
-3. On first run, you will be prompted to enter your GitHub username and newly generated API key to be authorized to push to the flatiron-school-curriculum organization.
+`flatiron-lab-generator [lab-type] [lab-name]`
 
 ## Lab Types
 
@@ -31,3 +31,11 @@ These are the Lab Types:
 * sinatra-lab-template
 
 We have the [flatiron-rails gem](https://github.com/flatiron-school/flatiron-rails) for generating Rails labs.
+
+## Lab Name
+
+The lab-name refers to the name of the lab (example: Sinatra-ORM-Halloween).
+
+## Reposit
+
+Logan made an awesome gem that creates a remote git repository. It's called [Reposit](https://github.com/loganhasson/reposit). After installing that and following the setup steps, run `reposit <lab name> -o flatiron-school-curriculum`.
