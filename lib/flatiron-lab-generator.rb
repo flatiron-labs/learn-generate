@@ -1,7 +1,9 @@
 require_relative '../config/environment.rb'
 
 module FlatironLabGenerator
-  class TemplateMaker   
+  class TemplateMaker
+    include TemplateHelper 
+      
     TEMPLATES = [
       "procedural-ruby-lab-template",
       "command-line-app-lab-template",
@@ -33,19 +35,13 @@ module FlatironLabGenerator
         bundle_init
         edit_readme
         if template_type == "procedural-ruby-lab-template"
-          change_filename
-          edit_file('spec/spec_helper.rb')
+          procedural_helper
         end
         if template_type == "command-line-app-lab-template"
-          change_filename('file.rb', 'rb')
-          edit_file("bin/runner.rb")
-          edit_file("spec/spec_helper.rb")
-          edit_file("lib/#{lab_name}.rb")
-          FileUtils.mv("lib/lab-name", "lib/#{lab_name}")
+          command_line_helper
         end
         if template_type == "SQL-lab-template"
-          change_filename('sample.sql', 'sql')
-          edit_file("bin/sql_runner.rb")
+          sql_helper
         end
       end
     end

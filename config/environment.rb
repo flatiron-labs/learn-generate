@@ -3,3 +3,4 @@ require "fileutils"
 require "pry"
 
 require_relative "../lib/file-finder.rb"
+require_relative "../lib/template-helper.rb"
