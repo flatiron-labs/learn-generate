@@ -22,7 +22,7 @@ module FlatironLabGenerator
     end
 
     def self.run(template_type, lab_name)
-      new(template_type, lab_name).create(template_type)
+      new(template_type, lab_name).parse(template_type)
     end
 
     def parse(template_type)
