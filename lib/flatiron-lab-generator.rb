@@ -34,17 +34,18 @@ module FlatironLabGenerator
         edit_readme
         if template_type == "procedural-ruby-lab-template"
           change_filename
-          change_rr('spec/spec_helper.rb')
+          edit_file('spec/spec_helper.rb')
         end
         if template_type == "command-line-app-lab-template"
           change_filename('file.rb', 'rb')
-          change_rr("bin/runner.rb")
-          change_rr("spec/spec_helper.rb")
-          change_rr("lib/#{lab_name}.rb")
+          edit_file("bin/runner.rb")
+          edit_file("spec/spec_helper.rb")
+          edit_file("lib/#{lab_name}.rb")
           FileUtils.mv("lib/lab-name", "lib/#{lab_name}")
         end
         if template_type == "SQL-lab-template"
           change_filename('sample.sql', 'sql')
+          edit_file("bin/sql_runner.rb")
         end
       end
     end
@@ -81,7 +82,7 @@ module FlatironLabGenerator
       end
     end
 
-    def change_rr(file)
+    def edit_file(file)
       new_rr = IO.read(file) % { file_name: lab_name }
       File.open(file, 'w') { |f| f.write(new_rr) }
     end
