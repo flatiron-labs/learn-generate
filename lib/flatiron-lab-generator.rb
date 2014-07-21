@@ -37,11 +37,14 @@ module FlatironLabGenerator
           change_rr('spec/spec_helper.rb')
         end
         if template_type == "command-line-app-lab-template"
-          change_filename
+          change_filename('file.rb', 'rb')
           change_rr("bin/runner.rb")
           change_rr("spec/spec_helper.rb")
           change_rr("lib/#{lab_name}.rb")
           FileUtils.mv("lib/lab-name", "lib/#{lab_name}")
+        end
+        if template_type == "SQL-lab-template"
+          change_filename('sample.sql', 'sql')
         end
       end
     end
@@ -72,9 +75,9 @@ module FlatironLabGenerator
       `bundle init`
     end
 
-    def change_filename
+    def change_filename(filename, extension)
       FileUtils.cd('lib/') do
-        File.rename('file.rb', "#{lab_name}.rb")
+        File.rename(filename, "#{lab_name}.#{extension}")
       end
     end
 
