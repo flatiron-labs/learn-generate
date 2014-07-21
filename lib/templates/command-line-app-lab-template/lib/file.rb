@@ -2,4 +2,4 @@ require 'bundler/setup'
 
 Bundler.require
 
-require_relative "%{lab_name}/cli"
+require_relative "%{file_name}/cli"

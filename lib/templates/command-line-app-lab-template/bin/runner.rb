@@ -1,4 +1,4 @@
-require_relative "../lib/%{lab_name}"
+require_relative "../lib/%{file_name}"
 
 summary = CLI.new
 summary.run

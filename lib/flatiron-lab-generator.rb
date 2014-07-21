@@ -33,15 +33,16 @@ module FlatironLabGenerator
         bundle_init
         edit_readme
         if template_type == "procedural-ruby-lab-template"
-          change_filename('lib/')
+          change_filename
           change_rr('spec/spec_helper.rb')
         end
         if template_type == "command-line-app-lab-template"
-          change_filename('lib/')
+          change_filename
           change_rr("bin/runner.rb")
           change_rr("spec/spec_helper.rb")
           change_rr("lib/#{lab_name}.rb")
           FileUtils.mv("lib/lab-name", "lib/#{lab_name}")
+        end
       end
     end
 
@@ -71,8 +72,8 @@ module FlatironLabGenerator
       `bundle init`
     end
 
-    def change_filename(path)
-      FileUtils.cd(path) do
+    def change_filename
+      FileUtils.cd('lib/') do
         File.rename('file.rb', "#{lab_name}.rb")
       end
     end
