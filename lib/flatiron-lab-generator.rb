@@ -22,21 +22,25 @@ module FlatironLabGenerator
     end
 
     def self.run(template_type, lab_name)
-      new(template_type, lab_name).parse(template_type)
+      new(template_type, lab_name).create
     end
 
-    def parse(template_type)
-      #given the template type, make the file
-      #then
-      name_lab
-      #calls methods
-      git_init
-      bundle_init
-      edit_readme
-      if template_type == "procedural-ruby-lab-template"
-        change_filename
-        change_spec_helper
+    def create
+      copy
+      new_lab = name_lab
+      FileUtils.cd(new_lab) do
+        git_init
+        bundle_init
+        edit_readme
+        if template_type == "procedural-ruby-lab-template"
+          change_filename
+          change_spec_helper
+        end
       end
+    end
+
+    def copy
+      FileUtils.cp_r("../templates/#{template_type}", FileUtils.pwd)
     end
 
     def name_lab
@@ -61,7 +65,7 @@ module FlatironLabGenerator
       `bundle init`
     end
 
-    #for procedural
+    #for procedural; TODO: make module
     def change_filename
       FileUtils.cd('lib/') do
         File.rename('file.rb', "#{lab_name}.rb")
@@ -72,6 +76,5 @@ module FlatironLabGenerator
       new_rr = IO.read('spec/spec_helper.rb') % { file_name: lab_name }
       File.open('spec/spec_helper.rb', 'w') { |f| f.write(new_rr) }
     end
-
   end
 end
