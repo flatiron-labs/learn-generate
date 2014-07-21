@@ -87,7 +87,4 @@ module FlatironLabGenerator
       File.open(file, 'w') { |f| f.write(new_rr) }
     end
   end
-
-  #TODO: include in this class
-
 end
