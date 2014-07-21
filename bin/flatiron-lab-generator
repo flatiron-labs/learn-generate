@@ -1,9 +1,39 @@
 #!/usr/bin/env ruby
 
 require 'flatiron-lab-generator'
+require 'optparse'
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: flatiron-lab-generator <template-type> <lab-name>"
+
+  opts.on("-h", "--help") do |h|
+    puts help
+  end
+end
 
 if (!ARGV[0] && !ARGV[1]) || !ARGV[0] || !ARGV[1]
-  puts "Usage: flatiron-lab-generator <template-type> <lab-name>"
+  puts help
+elsif !TEMPLATES.include?(ARGV[0])
+  puts help
 else
   FlatironLabGenerator::TemplateMaker.run(ARGV[0], ARGV[1])
 end
+
+help = <<-EOS
+  Usage: flatiron-lab-generator <template-type> <lab-name>
+
+  Template format: <template-type> (separated by dashes)
+
+  Lab name format: <lab-name> (separated by dashes)
+
+  Available templates:
+  1. procedural-ruby-lab-template
+  2. command-line-app-lab-template
+  3. SQL-lab-template
+  4. activerecord-template
+  5. rake-lab-template
+  6. erb-static-site-lab-template
+  7. rack-lab-template
+  8. sinatra-no-db-lab-template 
+  9. sinatra-lab-template
+EOS
