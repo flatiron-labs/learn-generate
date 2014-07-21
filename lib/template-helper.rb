@@ -1,6 +1,6 @@
-module 
+module TemplateHelper
   def procedural_helper
-    change_filename
+    change_filename('file.rb', 'rb')
     edit_file('spec/spec_helper.rb')
   end
 
