@@ -33,9 +33,15 @@ module FlatironLabGenerator
         bundle_init
         edit_readme
         if template_type == "procedural-ruby-lab-template"
-          change_filename
-          change_spec_helper
+          change_filename('lib/')
+          change_rr('spec/spec_helper.rb')
         end
+        if template_type == "command-line-app-lab-template"
+          change_filename('lib/')
+          change_rr("bin/runner.rb")
+          change_rr("spec/spec_helper.rb")
+          change_rr("lib/#{lab_name}.rb")
+          FileUtils.mv("lib/lab-name", "lib/#{lab_name}")
       end
     end
 
@@ -65,19 +71,19 @@ module FlatironLabGenerator
       `bundle init`
     end
 
-    #for procedural; TODO: make module
-    def change_filename
-      FileUtils.cd('lib/') do
+    def change_filename(path)
+      FileUtils.cd(path) do
         File.rename('file.rb', "#{lab_name}.rb")
       end
     end
 
-    def change_spec_helper
-      new_rr = IO.read('spec/spec_helper.rb') % { file_name: lab_name }
-      File.open('spec/spec_helper.rb', 'w') { |f| f.write(new_rr) }
+    def change_rr(file)
+      new_rr = IO.read(file) % { file_name: lab_name }
+      File.open(file, 'w') { |f| f.write(new_rr) }
     end
   end
 
+  #TODO: include in this class
   class FileFinder
     def self.location_to_dir(dir_name)
       new.location_to_dir(dir_name)
