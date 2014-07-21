@@ -3,23 +3,7 @@
 require 'flatiron-lab-generator'
 require 'optparse'
 
-OptionParser.new do |opts|
-  opts.banner = "Usage: flatiron-lab-generator <template-type> <lab-name>"
-
-  opts.on("-h", "--help") do |h|
-    puts help
-  end
-end.parse!
-
-if !ARGV[0] || !ARGV[1]
-  puts help
-elsif !TEMPLATES.include?(ARGV[0])
-  puts help
-else
-  FlatironLabGenerator::TemplateMaker.run(ARGV[0], ARGV[1])
-end
-
-help = <<-EOS
+my_banner = <<-EOS
   Usage: flatiron-lab-generator <template-type> <lab-name>
 
   Template format: <template-type> (separated by dashes)
@@ -37,3 +21,15 @@ help = <<-EOS
   8. sinatra-no-db-lab-template 
   9. sinatra-lab-template
 EOS
+
+OptionParser.new do |opts|
+  opts.banner = my_banner
+end.parse!
+
+if !ARGV[0] || !ARGV[1]
+  puts my_banner
+elsif !FlatironLabGenerator::TemplateMaker::TEMPLATES.include?(ARGV[0])
+  puts my_banner
+else
+  FlatironLabGenerator::TemplateMaker.run(ARGV[0], ARGV[1])
+end

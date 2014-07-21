@@ -1,7 +1,7 @@
 require_relative '../config/environment.rb'
 
 module FlatironLabGenerator
-  class TemplateMaker    
+  class TemplateMaker   
     TEMPLATES = [
       "procedural-ruby-lab-template",
       "command-line-app-lab-template",
@@ -27,8 +27,8 @@ module FlatironLabGenerator
 
     def create
       copy
-      new_lab = name_lab
-      FileUtils.cd(new_lab) do
+      name_lab
+      FileUtils.cd("#{lab_name}") do
         git_init
         bundle_init
         edit_readme
@@ -40,7 +40,7 @@ module FlatironLabGenerator
     end
 
     def copy
-      FileUtils.cp_r("../templates/#{template_type}", FileUtils.pwd)
+      FileUtils.cp_r(FileFinder.location_to_dir("templates/#{template_type}"), FileUtils.pwd)
     end
 
     def name_lab
@@ -75,6 +75,24 @@ module FlatironLabGenerator
     def change_spec_helper
       new_rr = IO.read('spec/spec_helper.rb') % { file_name: lab_name }
       File.open('spec/spec_helper.rb', 'w') { |f| f.write(new_rr) }
+    end
+  end
+
+  class FileFinder
+    def self.location_to_dir(dir_name)
+      new.location_to_dir(dir_name)
+    end
+   
+    def location_to_dir(dir_name)
+      File.join(File.dirname(File.expand_path(__FILE__)), "#{dir_name}")
+    end
+   
+    def self.location_to_file(file_name)
+      new.location_to_file(file_name)
+    end
+   
+    def location_to_file(file_name)
+      File.join(File.dirname(File.expand_path(__FILE__)))
     end
   end
 end

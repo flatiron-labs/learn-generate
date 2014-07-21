@@ -1,5 +1,3 @@
 require "flatiron-lab-generator/version.rb"
-require "file"
 require "fileutils"
-require "git"
-require "rspec"
+require "pry"
