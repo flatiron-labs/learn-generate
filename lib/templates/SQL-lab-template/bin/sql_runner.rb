@@ -5,7 +5,7 @@ class SQLRunner
     @db = db
   end
 
-  def execute_sample_sql
+  def execute_sql_file
     sql = File.read("lib/%{file_name}.sql")
     execute_sql(sql)
   end
