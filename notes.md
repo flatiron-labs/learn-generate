@@ -7,3 +7,5 @@ TODO
 3. You can specify the name of the lab so it creates the top level by that name.
 
 4. will make the lab-template in the PWD of where the gem call is made
+
+5. making a readme: parse the name of the lab and have it on the top

@@ -2,4 +2,8 @@
 
 require 'flatiron-lab-generator'
 
-FlatironLabGenerator::TemplateMaker.run
+if (!ARGV[0] && !ARGV[1]) || !ARGV[0] || !ARGV[1]
+  puts "Usage: flatiron-lab-generator <template-type> <lab-name>"
+else
+  FlatironLabGenerator::TemplateMaker.run(ARGV[0], ARGV[1])
+end
