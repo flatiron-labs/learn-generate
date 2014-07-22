@@ -21,4 +21,8 @@ module TemplateHelper
     change_filename('file.rb', 'rb')
     edit_file("config/environment.rb")
   end
+
+  def sinatra_helper
+    edit_gemfile
+  end
 end

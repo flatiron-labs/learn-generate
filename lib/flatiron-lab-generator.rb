@@ -47,6 +47,9 @@ module FlatironLabGenerator
         if template_type == "rake"
           rake_helper
         end
+        if template_type == "sinatra"
+          sinatra_helper
+        end
       end
     end
 
@@ -74,6 +77,27 @@ module FlatironLabGenerator
 
     def bundle_init
       `bundle init`
+    end
+
+    def edit_gemfile
+      File.open("Gemfile", 'a') do |f|
+        f << "\n gem 'sinatra'
+              \n gem 'activerecord', :require => 'active_record'
+              \n gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+              \n gem 'rake'
+              \n gem 'require_all'
+              \n gem 'sqlite3'
+              \n gem 'thin'
+              \n gem 'shotgun'
+              \n gem 'pry'
+              \n
+              \n group :test do
+              \n  gem 'rspec'
+              \n  gem 'capybara'
+              \n  gem 'rack-test'
+              \n  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+              \n end"
+      end
     end
 
     def change_filename(filename, extension)
