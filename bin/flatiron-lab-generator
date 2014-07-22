@@ -20,6 +20,7 @@ my_banner = <<-EOS
   7. rack
   8. sinatra-no-db 
   9. sinatra
+  10. js
 EOS
 
 OptionParser.new do |opts|

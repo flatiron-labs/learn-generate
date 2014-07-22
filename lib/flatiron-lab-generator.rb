@@ -13,7 +13,8 @@ module FlatironLabGenerator
       "erb-static-site",
       "rack",
       "sinatra-no-db",
-      "sinatra"
+      "sinatra",
+      "js"
     ]
 
     attr_reader :template_type, :lab_name
