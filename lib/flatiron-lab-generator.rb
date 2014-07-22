@@ -3,7 +3,7 @@ require_relative '../config/environment.rb'
 module FlatironLabGenerator
   class TemplateMaker
     include TemplateHelper 
-      
+
     TEMPLATES = [
       "procedural-ruby-lab-template",
       "command-line-app-lab-template",
@@ -42,6 +42,9 @@ module FlatironLabGenerator
         end
         if template_type == "SQL-lab-template"
           sql_helper
+        end
+        if template_type == "rake-lab-template"
+          rake_helper
         end
       end
     end

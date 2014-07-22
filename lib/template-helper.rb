@@ -16,4 +16,9 @@ module TemplateHelper
     change_filename('sample.sql', 'sql')
     edit_file("bin/sql_runner.rb")
   end
+
+  def rake_helper
+    change_filename('lib/file.rb', 'rb')
+    edit_file("config/environment.rb")
+  end
 end
