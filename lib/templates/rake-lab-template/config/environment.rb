@@ -1,1 +1,1 @@
-require_relative "../lib/%{file_name}""
+require_relative "../lib/%{file_name}"

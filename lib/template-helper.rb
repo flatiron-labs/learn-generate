@@ -18,7 +18,7 @@ module TemplateHelper
   end
 
   def rake_helper
-    change_filename('lib/file.rb', 'rb')
+    change_filename('file.rb', 'rb')
     edit_file("config/environment.rb")
   end
 end
