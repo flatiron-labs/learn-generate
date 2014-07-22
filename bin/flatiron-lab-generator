@@ -6,8 +6,9 @@ require 'optparse'
 my_banner = <<-EOS
   Usage: flatiron-lab-generator <template-type> <lab-name>
 
-  Template format: <template-type> (separated by dashes)
+  What is does: Creates a template for the type of lab specified. The template is created in the directory you call the gem in. Note that an empty git repo is initialized at creation, so be careful. #{"\u270B".encode("utf-8")}
 
+  Template format: <template-type> (separated by dashes)
   Lab name format: <lab-name> (separated by dashes)
 
   Available templates:
