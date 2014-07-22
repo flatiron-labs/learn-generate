@@ -20,15 +20,15 @@ Lab types have been outlined here in the [Ruby Lab Style Guide](https://github.c
 
 These are the Lab Types:
 
-* procedural-ruby-lab-template
-* command-line-app-lab-template
-* SQL-lab-template
-* activerecord-template
-* rake-lab-template
-* erb-static-site-lab-template
-* rack-lab-template
-* sinatra-no-db-lab-template 
-* sinatra-lab-template
+* procedural-ruby
+* command-line
+* SQL
+* activerecord
+* rake
+* erb-static-site
+* rack
+* sinatra-no-db 
+* sinatra
 
 We have the [flatiron-rails gem](https://github.com/flatiron-school/flatiron-rails) for generating Rails labs.
 

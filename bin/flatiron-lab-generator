@@ -11,15 +11,15 @@ my_banner = <<-EOS
   Lab name format: <lab-name> (separated by dashes)
 
   Available templates:
-  1. procedural-ruby-lab-template
-  2. command-line-app-lab-template
-  3. SQL-lab-template
-  4. activerecord-template
-  5. rake-lab-template
-  6. erb-static-site-lab-template
-  7. rack-lab-template
-  8. sinatra-no-db-lab-template 
-  9. sinatra-lab-template
+  1. procedural-ruby
+  2. command-line
+  3. SQL
+  4. activerecord
+  5. rake
+  6. erb-static-site
+  7. rack
+  8. sinatra-no-db 
+  9. sinatra
 EOS
 
 OptionParser.new do |opts|

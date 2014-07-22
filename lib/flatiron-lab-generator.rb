@@ -5,15 +5,15 @@ module FlatironLabGenerator
     include TemplateHelper 
 
     TEMPLATES = [
-      "procedural-ruby-lab-template",
-      "command-line-app-lab-template",
-      "SQL-lab-template",
-      "activerecord-template",
-      "rake-lab-template",
-      "erb-static-site-lab-template",
-      "rack-lab-template",
-      "sinatra-no-db-lab-template ",
-      "sinatra-lab-template"
+      "procedural-ruby",
+      "command-line",
+      "SQL",
+      "activerecord",
+      "rake",
+      "erb-static-site",
+      "rack",
+      "sinatra-no-db",
+      "sinatra"
     ]
 
     attr_reader :template_type, :lab_name
@@ -34,16 +34,16 @@ module FlatironLabGenerator
         git_init
         bundle_init
         edit_readme
-        if template_type == "procedural-ruby-lab-template"
+        if template_type == "procedural-ruby"
           procedural_helper
         end
-        if template_type == "command-line-app-lab-template"
+        if template_type == "command-line"
           command_line_helper
         end
-        if template_type == "SQL-lab-template"
+        if template_type == "SQL"
           sql_helper
         end
-        if template_type == "rake-lab-template"
+        if template_type == "rake"
           rake_helper
         end
       end
