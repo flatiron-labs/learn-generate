@@ -36,27 +36,13 @@ module FlatironLabGenerator
         git_init
         bundle_init unless template_type == "js"
         edit_readme
-        if template_type == "procedural-ruby"
-          procedural_helper
-        end
-        if template_type == "command-line"
-          command_line_helper
-        end
-        if template_type == "SQL"
-          sql_helper
-        end
-        if template_type == "rake"
-          rake_helper
-        end
-        if template_type == "sinatra-mvc"
-          sinatra_mvc_helper
-        end
-        if template_type == "sinatra-classic"
-          sinatra_classic_helper
-        end
-        if template_type == "js"
-          js_helper
-        end
+        procedural_helper if template_type == "procedural-ruby"
+        command_line_helper if template_type == "command-line"
+        sql_helper if template_type == "SQL"
+        rake_helper if template_type == "rake"
+        sinatra_mvc_helper if template_type == "sinatra-mvc"
+        sinatra_classic_helper if template_type == "sinatra-classic"
+        js_helper if template_type == "js"
       end
     end
 
