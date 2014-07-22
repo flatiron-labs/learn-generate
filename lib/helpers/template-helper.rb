@@ -22,7 +22,11 @@ module TemplateHelper
     edit_file("config/environment.rb")
   end
 
-  def sinatra_helper
-    edit_gemfile
+  def sinatra_mvc_helper
+    edit_mvc_gemfile
+  end
+
+  def sinatra_classic_helper
+    edit_classic_gemfile
   end
 end

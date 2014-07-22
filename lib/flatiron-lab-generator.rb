@@ -3,6 +3,7 @@ require_relative '../config/environment.rb'
 module FlatironLabGenerator
   class TemplateMaker
     include TemplateHelper 
+    include GemfileHelper
 
     TEMPLATES = [
       "procedural-ruby",
@@ -12,8 +13,8 @@ module FlatironLabGenerator
       "rake",
       "erb-static-site",
       "rack",
-      "sinatra-no-db",
-      "sinatra",
+      "sinatra-classic",
+      "sinatra-mvc",
       "js"
     ]
 
@@ -47,8 +48,11 @@ module FlatironLabGenerator
         if template_type == "rake"
           rake_helper
         end
-        if template_type == "sinatra"
-          sinatra_helper
+        if template_type == "sinatra-mvc"
+          sinatra_mvc_helper
+        end
+        if template_type == "sinatra-classic"
+          sinatra_classic_helper
         end
       end
     end
@@ -77,26 +81,6 @@ module FlatironLabGenerator
 
     def bundle_init
       `bundle init`
-    end
-
-    def edit_gemfile
-      File.open("Gemfile", 'a') do |f|
-        f << "\ngem 'sinatra'
-gem 'activerecord', :require => 'active_record'
-gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-gem 'rake'
-gem 'require_all'
-gem 'sqlite3'
-gem 'thin'
-gem 'shotgun'
-gem 'pry'
-\ngroup :test do
-  gem 'rspec'
-  gem 'capybara'
-  gem 'rack-test'
-  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-end"
-      end
     end
 
     def change_filename(filename, extension)

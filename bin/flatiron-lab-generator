@@ -18,8 +18,8 @@ my_banner = <<-EOS
   5. rake
   6. erb-static-site
   7. rack
-  8. sinatra-no-db 
-  9. sinatra
+  8. sinatra-classic 
+  9. sinatra-mvc
   10. js
 EOS
 

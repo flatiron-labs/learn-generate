@@ -27,8 +27,8 @@ These are the Lab Types:
 * rake
 * erb-static-site
 * rack
-* sinatra-no-db 
-* sinatra
+* sinatra-classic
+* sinatra-mvc
 * js
 
 We have the [flatiron-rails gem](https://github.com/flatiron-school/flatiron-rails) for generating Rails labs.
