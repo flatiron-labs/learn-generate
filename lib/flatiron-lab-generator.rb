@@ -81,22 +81,21 @@ module FlatironLabGenerator
 
     def edit_gemfile
       File.open("Gemfile", 'a') do |f|
-        f << "\n gem 'sinatra'
-              \n gem 'activerecord', :require => 'active_record'
-              \n gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-              \n gem 'rake'
-              \n gem 'require_all'
-              \n gem 'sqlite3'
-              \n gem 'thin'
-              \n gem 'shotgun'
-              \n gem 'pry'
-              \n
-              \n group :test do
-              \n  gem 'rspec'
-              \n  gem 'capybara'
-              \n  gem 'rack-test'
-              \n  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-              \n end"
+        f << "\ngem 'sinatra'
+gem 'activerecord', :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'sqlite3'
+gem 'thin'
+gem 'shotgun'
+gem 'pry'
+\ngroup :test do
+  gem 'rspec'
+  gem 'capybara'
+  gem 'rack-test'
+  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+end"
       end
     end
 
