@@ -12,7 +12,7 @@ $ gem install flatiron-lab-generator
 
 ## Usage
 
-`flatiron-lab-generator [lab-type] [lab-name]`
+`flatiron-lab-generator <lab-type> <lab-name>`
 
 ## Lab Types
 
