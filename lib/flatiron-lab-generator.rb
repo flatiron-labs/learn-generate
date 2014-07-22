@@ -34,7 +34,7 @@ module FlatironLabGenerator
       name_lab
       FileUtils.cd("#{lab_name}") do
         git_init
-        bundle_init
+        bundle_init unless template_type == "js"
         edit_readme
         if template_type == "procedural-ruby"
           procedural_helper
@@ -53,6 +53,9 @@ module FlatironLabGenerator
         end
         if template_type == "sinatra-classic"
           sinatra_classic_helper
+        end
+        if template_type == "js"
+          js_helper
         end
       end
     end
@@ -83,8 +86,8 @@ module FlatironLabGenerator
       `bundle init`
     end
 
-    def change_filename(filename, extension)
-      FileUtils.cd('lib/') do
+    def change_filename(path, filename, extension)
+      FileUtils.cd(path) do
         File.rename(filename, "#{lab_name}.#{extension}")
       end
     end

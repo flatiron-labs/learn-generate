@@ -1,11 +1,11 @@
 module TemplateHelper
   def procedural_helper
-    change_filename('file.rb', 'rb')
+    change_filename('lib/', 'file.rb', 'rb')
     edit_file('spec/spec_helper.rb')
   end
 
   def command_line_helper
-    change_filename('file.rb', 'rb')
+    change_filename('lib/', 'file.rb', 'rb')
     edit_file("bin/runner.rb")
     edit_file("spec/spec_helper.rb")
     edit_file("lib/#{lab_name}.rb")
@@ -13,12 +13,12 @@ module TemplateHelper
   end
 
   def sql_helper
-    change_filename('sample.sql', 'sql')
+    change_filename('lib/', 'sample.sql', 'sql')
     edit_file("bin/sql_runner.rb")
   end
 
   def rake_helper
-    change_filename('file.rb', 'rb')
+    change_filename('lib/', 'file.rb', 'rb')
     edit_file("config/environment.rb")
   end
 
@@ -28,5 +28,9 @@ module TemplateHelper
 
   def sinatra_classic_helper
     edit_classic_gemfile
+  end
+
+  def js_helper
+    change_filename('js/', 'file.js', 'js')
   end
 end
