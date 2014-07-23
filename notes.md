@@ -1,6 +1,12 @@
 TODO
 
-* add reposit gem as a dependency and the option to use it
+* add reposit gem as a dependency and the option to use it?
+
+* make the git init an option?
+
+* make js testing an option?
+
+* erb lab template?
 
 TO BUILD
 
