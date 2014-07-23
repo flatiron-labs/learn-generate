@@ -18,22 +18,23 @@ module FlatironLabGenerator
       "js"
     ]
 
-    attr_reader :template_type, :lab_name
+    attr_reader :template_type, :lab_name, :git
 
-    def initialize(template_type, lab_name)
+    def initialize(template_type, lab_name, git)
       @template_type = template_type
       @lab_name = lab_name
+      @git = git
     end
 
-    def self.run(template_type, lab_name)
-      new(template_type, lab_name).create
+    def self.run(template_type, lab_name, git)
+      new(template_type, lab_name, git).create
     end
 
     def create
       copy
       name_lab
       FileUtils.cd("#{lab_name}") do
-        git_init
+        git_init if !git.nil?
         bundle_init unless template_type == "js"
         edit_readme
         procedural_helper if template_type == "procedural-ruby"

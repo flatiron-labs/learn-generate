@@ -4,7 +4,7 @@ A gem for generating labs in the format/style we use for making labs at the Flat
 
 ## Dependencies
 
-Assumes installation of git. The gem initializes an empty git repository. Make sure you have git installed first before using the gem.
+Assumes installation of git.
 
 ## Installation
 
@@ -13,6 +13,10 @@ Visit [http://gems.flatironschool.com/](http://gems.flatironschool.com/)
 ## Usage
 
 `flatiron-lab-generator <lab-type> <lab-name>`
+
+### With git
+
+Execute as `flatiron-lab-generator <lab-type> <lab-name> -g` if you want your template to be created with an initialized git repository.
 
 ## Lab Types
 

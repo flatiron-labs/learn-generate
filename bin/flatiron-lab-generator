@@ -3,6 +3,8 @@
 require 'flatiron-lab-generator'
 require 'optparse'
 
+git = nil
+
 my_banner = <<-EOS
   Usage: flatiron-lab-generator <template-type> <lab-name>
 
@@ -26,6 +28,9 @@ EOS
 
 OptionParser.new do |opts|
   opts.banner = my_banner
+  opts.on("-g", "--git", "Initialize git when template is generated") do |g|
+    git = g
+  end
 end.parse!
 
 if !ARGV[0] || !ARGV[1]
@@ -33,5 +38,5 @@ if !ARGV[0] || !ARGV[1]
 elsif !FlatironLabGenerator::TemplateMaker::TEMPLATES.include?(ARGV[0])
   puts my_banner
 else
-  FlatironLabGenerator::TemplateMaker.run(ARGV[0], ARGV[1])
+  FlatironLabGenerator::TemplateMaker.run(ARGV[0], ARGV[1], git)
 end
