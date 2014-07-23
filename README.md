@@ -8,7 +8,7 @@ Assumes installation of git. The gem initializes an empty git repository. Make s
 
 ## Installation
 
-$ gem install flatiron-lab-generator
+Visit [http://gems.flatironschool.com/](http://gems.flatironschool.com/)
 
 ## Usage
 
