@@ -45,6 +45,7 @@ module FlatironLabGenerator
         sinatra_classic_helper if template_type == "sinatra-classic"
         js_helper if template_type == "js"
       end
+      success_message
     end
 
     def copy
@@ -82,6 +83,13 @@ module FlatironLabGenerator
     def edit_file(file)
       new_rr = IO.read(file) % { file_name: lab_name }
       File.open(file, 'w') { |f| f.write(new_rr) }
+    end
+
+    def success_message
+      puts "\n#{formatted_name} Lab successfully created in #{FileUtils.pwd}\n"
+      FileUtils.cd("#{lab_name}") do
+        puts "#{`tree`}"
+      end
     end
   end
 end
