@@ -70,18 +70,22 @@ module FlatironLabGenerator
       lab_name.gsub('-', ' ').split.map(&:capitalize).join(' ')
     end
 
+    def formatted_lab_name
+      lab_name.gsub('-', '_')
+    end
+
     def bundle_init
       `bundle init`
     end
 
     def change_filename(path, filename, extension)
       FileUtils.cd(path) do
-        File.rename(filename, "#{lab_name}.#{extension}")
+        File.rename(filename, "#{formatted_lab_name}.#{extension}")
       end
     end
 
     def edit_file(file)
-      new_rr = IO.read(file) % { file_name: lab_name }
+      new_rr = IO.read(file) % { file_name: formatted_lab_name }
       File.open(file, 'w') { |f| f.write(new_rr) }
     end
 

@@ -8,7 +8,7 @@ module TemplateHelper
     change_filename('lib/', 'file.rb', 'rb')
     edit_file("bin/runner.rb")
     edit_file("spec/spec_helper.rb")
-    edit_file("lib/#{lab_name}.rb")
+    edit_file("lib/#{formatted_lab_name}.rb")
     FileUtils.mv("lib/lab-name", "lib/#{lab_name}")
   end
 
