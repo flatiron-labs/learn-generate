@@ -34,6 +34,7 @@ module FlatironLabGenerator
       copy
       name_lab
       FileUtils.cd("#{lab_name}") do
+        touch_spec unless template_type == "js" || template_type == "sinatra-mvc"
         git_init if !git.nil?
         bundle_init unless template_type == "js"
         edit_readme
@@ -76,6 +77,12 @@ module FlatironLabGenerator
 
     def bundle_init
       `bundle init`
+    end
+
+    def touch_spec
+      FileUtils.cd("spec/") do
+        `touch #{formatted_lab_name}_spec.rb`
+      end
     end
 
     def change_filename(path, filename, extension)
