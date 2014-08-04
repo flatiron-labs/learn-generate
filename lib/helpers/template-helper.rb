@@ -1,26 +1,26 @@
 module TemplateHelper
   def procedural_helper
     change_filename('lib/', 'file.rb', 'rb')
-    edit_file('spec/spec_helper.rb')
+    edit_file('spec/spec_helper.rb', formatted_lab_name)
     edit_gemfile
   end
 
   def command_line_helper
-    edit_file("bin/runner.rb")
-    edit_file("spec/spec_helper.rb")
-    edit_file("lib/environment.rb")
+    edit_file("bin/runner.rb", formatted_lab_name)
+    edit_file("spec/spec_helper.rb", formatted_lab_name)
+    edit_file("lib/environment.rb", formatted_lab_name)
     FileUtils.mv("lib/lab-name", "lib/#{lab_name}")
     edit_gemfile
   end
 
   def sql_helper
     change_filename('lib/', 'sample.sql', 'sql')
-    edit_file("bin/sql_runner.rb")
+    edit_file("bin/sql_runner.rb", formatted_lab_name)
   end
 
   def rake_helper
     change_filename('lib/', 'file.rb', 'rb')
-    edit_file("config/environment.rb")
+    edit_file("config/environment.rb", formatted_lab_name)
     edit_gemfile
   end
 
@@ -37,6 +37,6 @@ module TemplateHelper
   end
 
   def fe_helper
-    edit_file('index.html')
+    edit_file('index.html', formatted_name)
   end
 end

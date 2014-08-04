@@ -93,8 +93,8 @@ module FlatironLabGenerator
       end
     end
 
-    def edit_file(file)
-      new_rr = IO.read(file) % { file_name: formatted_lab_name }
+    def edit_file(file, text)
+      new_rr = IO.read(file) % { file_name: text }
       File.open(file, 'w') { |f| f.write(new_rr) }
     end
 
