@@ -24,6 +24,7 @@ my_banner = <<-EOS
   8. sinatra-classic 
   9. sinatra-mvc
   10. js
+  11. front-end
 EOS
 
 OptionParser.new do |opts|

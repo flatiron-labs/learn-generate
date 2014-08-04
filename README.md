@@ -34,6 +34,7 @@ These are the Lab Types:
 * sinatra-classic
 * sinatra-mvc
 * js
+* front-end
 
 We have the [flatiron-rails gem](https://github.com/flatiron-school/flatiron-rails) for generating Rails labs.
 

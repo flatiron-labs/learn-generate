@@ -15,7 +15,8 @@ module FlatironLabGenerator
       "rack",
       "sinatra-classic",
       "sinatra-mvc",
-      "js"
+      "js",
+      "front-end"
     ]
 
     attr_reader :template_type, :lab_name, :git
@@ -34,9 +35,9 @@ module FlatironLabGenerator
       copy
       name_lab
       FileUtils.cd("#{lab_name}") do
-        touch_spec unless template_type == "js" || template_type == "sinatra-mvc"
+        touch_spec unless template_type == "js" || template_type == "sinatra-mvc" || template_type == "front-end"
         git_init if !git.nil?
-        bundle_init unless template_type == "js"
+        bundle_init unless template_type == "js" || template_type == "front-end"
         edit_readme
         procedural_helper if template_type == "procedural-ruby"
         command_line_helper if template_type == "command-line"
@@ -45,6 +46,7 @@ module FlatironLabGenerator
         sinatra_mvc_helper if template_type == "sinatra-mvc"
         sinatra_classic_helper if template_type == "sinatra-classic"
         js_helper if template_type == "js"
+        fe_helper if template_type == "front-end"
       end
       success_message
     end

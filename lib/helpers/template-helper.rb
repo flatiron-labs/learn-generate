@@ -35,4 +35,8 @@ module TemplateHelper
   def js_helper
     change_filename('js/', 'file.js', 'js')
   end
+
+  def fe_helper
+    edit_file('index.html')
+  end
 end
