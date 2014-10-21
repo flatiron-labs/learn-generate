@@ -20,11 +20,11 @@ Execute as `flatiron-lab-generator <lab-type> <lab-name> -g` if you want your te
 
 ## Lab Types
 
-Lab types have been outlined here in the [Ruby Lab Style Guide](https://github.com/flatiron-school-curriculum/ruby-lab-style-guide#topics)
+Lab types have been outlined in the [Curriculum Style Guide](https://github.com/flatiron-school-curriculum/curriculum-style-guide/blob/master/lab-templates.md)
 
 These are the Lab Types:
 
-* procedural-ruby
+* fundamental-ruby
 * command-line
 * SQL
 * activerecord

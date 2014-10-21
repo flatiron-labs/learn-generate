@@ -1,5 +1,5 @@
 module TemplateHelper
-  def procedural_helper
+  def fundamental_helper
     change_filename('lib/', 'file.rb', 'rb')
     edit_file('spec/spec_helper.rb', formatted_lab_name)
     edit_gemfile

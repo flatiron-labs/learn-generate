@@ -14,7 +14,7 @@ my_banner = <<-EOS
   Lab name format: <lab-name> (separated by dashes)
 
   Available templates:
-  1. procedural-ruby
+  1. fundamental-ruby
   2. command-line
   3. SQL
   4. activerecord

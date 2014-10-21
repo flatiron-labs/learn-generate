@@ -6,7 +6,7 @@ module FlatironLabGenerator
     include GemfileHelper
 
     TEMPLATES = [
-      "procedural-ruby",
+      "fundamental-ruby",
       "command-line",
       "SQL",
       "activerecord",
@@ -39,7 +39,7 @@ module FlatironLabGenerator
         git_init if !git.nil?
         bundle_init unless template_type == "js" || template_type == "front-end"
         edit_readme
-        procedural_helper if template_type == "procedural-ruby"
+        fundamental_helper if template_type == "fundamental-ruby"
         command_line_helper if template_type == "command-line"
         sql_helper if template_type == "SQL"
         rake_helper if template_type == "rake"
