@@ -15,7 +15,6 @@ module TemplateHelper
 
   def sql_helper
     change_filename('lib/', 'sample.sql', 'sql')
-    edit_file("bin/sql_runner.rb", formatted_lab_name)
   end
 
   def rake_helper
