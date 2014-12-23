@@ -16,7 +16,8 @@ module FlatironLabGenerator
       "sinatra-classic",
       "sinatra-mvc",
       "js",
-      "front-end"
+      "front-end",
+      "kids"
     ]
 
     attr_reader :template_type, :lab_name, :git
@@ -47,6 +48,7 @@ module FlatironLabGenerator
         sinatra_classic_helper if template_type == "sinatra-classic"
         js_helper if template_type == "js"
         fe_helper if template_type == "front-end"
+        kids_helper if template_type == "kids"
       end
       success_message
     end
@@ -96,6 +98,10 @@ module FlatironLabGenerator
     def edit_file(file, text)
       new_rr = IO.read(file) % { file_name: text }
       File.open(file, 'w') { |f| f.write(new_rr) }
+    end
+
+    def edit_spec(file)
+      File.open(file, 'w') { |f| f.write("require_relative './spec_helper'") }
     end
 
     def success_message

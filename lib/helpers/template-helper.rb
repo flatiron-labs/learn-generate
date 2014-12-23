@@ -38,4 +38,11 @@ module TemplateHelper
   def fe_helper
     edit_file('index.html', formatted_name)
   end
+
+  def kids_helper
+    change_filename('lib/', 'file.rb', 'rb')
+    edit_file('spec/spec_helper.rb', formatted_lab_name)
+    edit_spec("spec/#{formatted_lab_name}_spec.rb")
+    edit_gemfile
+  end
 end
