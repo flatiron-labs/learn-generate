@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'flatiron-lab-generator'
+require_relative "../config/environment"
 require 'optparse'
 
 git = nil
