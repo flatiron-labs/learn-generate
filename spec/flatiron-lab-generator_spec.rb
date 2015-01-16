@@ -42,12 +42,6 @@ describe FlatironLabGenerator::TemplateMaker do
       FileUtils.rm_rf(lab_name)
     end
 
-    it "creates a erb-static-site lab template" do
-      expect(FlatironLabGenerator::TemplateMaker.run("erb-static-site",lab_name, "git repo")).to be_nil 
-      expect(`tree #{lab_name}`).to eq("test_lab\n├── Gemfile\n├── README.md\n├── Rakefile\n├── bin\n│   └── console\n├── config\n│   └── environment.rb\n├── lib\n│   └── test_lab.rb\n└── spec\n    ├── rakefile_spec.rb\n    ├── spec_helper.rb\n    └── test_lab_spec.rb\n\n4 directories, 9 files\n")
-      FileUtils.rm_rf(lab_name)
-    end
-
     it "creates a rack lab template" do
       expect(FlatironLabGenerator::TemplateMaker.run("rack",lab_name, "git repo")).to be_nil 
       expect(`tree #{lab_name}`).to eq("test_lab\n├── Gemfile\n├── README.md\n├── app\n│   ├── application.rb\n│   └── controllers\n│       └── erb_maker.rb\n├── config\n│   └── environment.rb\n├── config.ru\n├── lib\n│   └── templates\n│       └── my_cool_response.html.erb\n└── spec\n    ├── controllers\n    │   └── 01_server_port_spec.rb\n    ├── spec_helper.rb\n    ├── support\n    │   └── an_ok_request.rb\n    └── test_lab_spec.rb\n\n8 directories, 11 files\n")
@@ -82,12 +76,6 @@ describe FlatironLabGenerator::TemplateMaker do
       expect(FlatironLabGenerator::TemplateMaker.run("kids",lab_name, "git repo")).to be_nil 
       expect(`tree #{lab_name}`).to eq("test_lab\n├── Gemfile\n├── README.md\n├── lib\n│   └── test_lab.rb\n└── spec\n    ├── spec_helper.rb\n    └── test_lab_spec.rb\n\n2 directories, 5 files\n")
       FileUtils.rm_rf(lab_name)
-    end
-  end
-
-  describe "#create" do
-    it "does something" do
-      expect(true).to eq(true)
     end
   end
 end

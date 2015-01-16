@@ -11,7 +11,6 @@ module FlatironLabGenerator
       "SQL",
       "activerecord",
       "rake",
-      "erb-static-site",
       "rack",
       "sinatra-classic",
       "sinatra-mvc",
