@@ -61,7 +61,9 @@ describe FlatironLabGenerator::TemplateMaker do
     end
 
     it "creates a sinatra-mvc lab" do
-
+      expect(FlatironLabGenerator::TemplateMaker.run("sinatra-mvc",lab_name, "git repo")).to be_nil 
+      expect(`tree #{lab_name}`).to eq("test_lab\n├── Gemfile\n├── README.md\n├── Rakefile\n├── app\n│   ├── controllers\n│   │   └── application_controller.rb\n│   ├── models\n│   └── views\n│       └── layout.erb\n├── config\n│   └── environment.rb\n├── config.ru\n├── db\n│   ├── migrate\n│   └── seeds.rb\n├── public\n│   └── stylesheets\n└── spec\n    ├── controllers\n    ├── features\n    ├── models\n    └── spec_helper.rb\n\n13 directories, 9 files\n")
+      FileUtils.rm_rf(lab_name)
     end
   end
 
