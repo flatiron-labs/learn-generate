@@ -77,6 +77,12 @@ describe FlatironLabGenerator::TemplateMaker do
       expect(`tree #{lab_name}`).to eq("test_lab\n├── README.md\n├── css\n│   └── style.css\n├── images\n└── index.html\n\n2 directories, 3 files\n")
       FileUtils.rm_rf(lab_name)
     end
+
+    it "creates a kids template" do 
+      expect(FlatironLabGenerator::TemplateMaker.run("kids",lab_name, "git repo")).to be_nil 
+      expect(`tree #{lab_name}`).to eq("test_lab\n├── Gemfile\n├── README.md\n├── lib\n│   └── test_lab.rb\n└── spec\n    ├── spec_helper.rb\n    └── test_lab_spec.rb\n\n2 directories, 5 files\n")
+      FileUtils.rm_rf(lab_name)
+    end
   end
 
   describe "#create" do
