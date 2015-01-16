@@ -71,6 +71,12 @@ describe FlatironLabGenerator::TemplateMaker do
       expect(`tree #{lab_name}`).to eq("test_lab\n├── README.md\n├── css\n├── images\n├── index.html\n├── js\n│   ├── jquery-1.8.3.min.js\n│   └── test_lab.js\n├── requires.yml\n└── spec\n\n4 directories, 5 files\n" )
       FileUtils.rm_rf(lab_name)
     end
+
+    it "creates a front-end template" do
+      expect(FlatironLabGenerator::TemplateMaker.run("front-end",lab_name, "git repo")).to be_nil 
+      expect(`tree #{lab_name}`).to eq("test_lab\n├── README.md\n├── css\n│   └── style.css\n├── images\n└── index.html\n\n2 directories, 3 files\n")
+      FileUtils.rm_rf(lab_name)
+    end
   end
 
   describe "#create" do
