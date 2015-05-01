@@ -20,7 +20,7 @@ Execute as `flatiron-lab-generator <lab-type> <lab-name> -g` if you want your te
 
 ## Lab Types
 
-Lab types have been outlined in the [Curriculum Style Guide](https://github.com/flatiron-school-curriculum/curriculum-style-guide/blob/master/lab-templates.md)
+Lab types have been outlined in the [Curriculum Style Guide](https://github.com/learn-co-curriculum/curriculum-style-guide/blob/master/lab-templates.md)
 
 These are the Lab Types:
 
@@ -44,4 +44,4 @@ The lab-name refers to the name of the lab (example: Sinatra-ORM-Halloween).
 
 ## Reposit
 
-Logan made an awesome gem that creates a remote git repository from the command line. It's called [Reposit](https://github.com/loganhasson/reposit). After installing that and following the setup steps, run `reposit <lab name> -o flatiron-school-curriculum`.
+Logan made an awesome gem that creates a remote git repository from the command line. It's called [Reposit](https://github.com/loganhasson/reposit). After installing that and following the setup steps, run `reposit <lab name> -o learn-co-curriculum`.
