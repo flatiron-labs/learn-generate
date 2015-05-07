@@ -1,11 +1,6 @@
-TODO
-
-* add reposit gem as a dependency and the option to use it?
-
-* make js testing an option?
-* does js template need Gemfile for jasmine-flatiron?
-
-* erb lab template?
+TO TEST LOCALLY
+1. `gem build flatiron-lab-generator.gemspec`
+2. `gem install ./flatiron-lab-generator-0.0.12.gem` (whatever version)
 
 TO BUILD
 
