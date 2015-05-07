@@ -4,6 +4,7 @@ module FlatironLabGenerator
   class TemplateMaker
     include TemplateHelper 
     include GemfileHelper
+    include DotLearnHelper
 
     TEMPLATES = [
       "fundamental-ruby",
