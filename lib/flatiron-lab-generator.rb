@@ -36,6 +36,8 @@ module FlatironLabGenerator
       name_lab
       FileUtils.cd("#{lab_name}") do
         touch_spec unless template_type == "js" || template_type == "sinatra-mvc" || template_type == "front-end"
+        touch_dot_learn
+        build_dot_learn
         git_init if !git.nil?
         bundle_init unless template_type == "js" || template_type == "front-end"
         edit_readme
@@ -86,6 +88,10 @@ module FlatironLabGenerator
       FileUtils.cd("spec/") do
         `touch #{formatted_lab_name}_spec.rb`
       end
+    end
+
+    def touch_dot_learn
+      `touch .learn`
     end
 
     def change_filename(path, filename, extension)
