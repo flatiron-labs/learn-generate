@@ -54,7 +54,7 @@ module LearnGenerate
     end
 
     def copy
-      FileUtils.cp_r(LearnGenerate::FileFinder.location_to_dir("templates/#{template_type}"), FileUtils.pwd)
+      FileUtils.cp_r(LearnGenerate::FileFinder.location_to_dir("../templates/#{template_type}"), FileUtils.pwd)
     end
 
     def name_lab
@@ -111,7 +111,11 @@ module LearnGenerate
     def success_message
       puts "\n#{formatted_name} Lab successfully created in #{FileUtils.pwd}\n"
       FileUtils.cd("#{lab_name}") do
-        puts "#{`tree`}"
+        tree_output = `which tree 2>/dev/null`
+
+        if !tree_output.empty?
+          puts "#{`tree`}"
+        end
       end
     end
   end
