@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative "../config/environment"
-require 'optparse'
+require 'learn_generate'
 
 git = nil
 
@@ -37,8 +36,8 @@ end.parse!
 
 if !ARGV[0] || !ARGV[1]
   puts my_banner
-elsif !FlatironLabGenerator::TemplateMaker::TEMPLATES.include?(ARGV[0])
+elsif !LearnGenerate::TemplateMaker::TEMPLATES.include?(ARGV[0])
   puts my_banner
 else
-  FlatironLabGenerator::TemplateMaker.run(ARGV[0], ARGV[1], git)
+  LearnGenerate::TemplateMaker.run(ARGV[0], ARGV[1], git)
 end

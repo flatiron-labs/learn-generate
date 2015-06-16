@@ -1,10 +1,8 @@
-require_relative '../config/environment.rb'
-
-module FlatironLabGenerator
+module LearnGenerate
   class TemplateMaker
-    include TemplateHelper 
-    include GemfileHelper
-    include DotLearnHelper
+    include LearnGenerate::Helpers::TemplateHelper
+    include LearnGenerate::Helpers::GemfileHelper
+    include LearnGenerate::Helpers::DotLearnHelper
 
     TEMPLATES = [
       "fundamental-ruby",
@@ -56,7 +54,7 @@ module FlatironLabGenerator
     end
 
     def copy
-      FileUtils.cp_r(FileFinder.location_to_dir("templates/#{template_type}"), FileUtils.pwd)
+      FileUtils.cp_r(LearnGenerate::FileFinder.location_to_dir("templates/#{template_type}"), FileUtils.pwd)
     end
 
     def name_lab
