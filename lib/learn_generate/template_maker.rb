@@ -7,7 +7,7 @@ module LearnGenerate
     TEMPLATES = [
       "fundamental-ruby",
       "command-line",
-      "SQL",
+      "sql",
       "activerecord",
       "rake",
       "rack",
