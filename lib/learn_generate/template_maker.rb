@@ -18,16 +18,15 @@ module LearnGenerate
       "kids"
     ]
 
-    attr_reader :template_type, :lab_name, :git
+    attr_reader :template_type, :lab_name
 
-    def initialize(template_type, lab_name, git)
+    def initialize(template_type, lab_name)
       @template_type = template_type
       @lab_name = lab_name
-      @git = git
     end
 
-    def self.run(template_type, lab_name, git)
-      new(template_type, lab_name, git).create
+    def self.run(template_type, lab_name)
+      new(template_type, lab_name).create
     end
 
     def create
@@ -37,7 +36,7 @@ module LearnGenerate
         touch_spec unless template_type == "js" || template_type == "sinatra-mvc" || template_type == "front-end"
         touch_dot_learn
         build_dot_learn
-        git_init if !git.nil?
+        git_init
         bundle_init unless template_type == "js" || template_type == "front-end"
         edit_readme
         fundamental_helper if template_type == "fundamental-ruby"

@@ -2,8 +2,6 @@
 
 require 'learn_generate'
 
-git = nil
-
 my_banner = <<-EOS
   Usage: flatiron-lab-generator <template-type> <lab-name>
 
@@ -29,9 +27,6 @@ EOS
 
 OptionParser.new do |opts|
   opts.banner = my_banner
-  opts.on("-g", "--git", "Initialize git when template is generated") do |g|
-    git = g
-  end
 end.parse!
 
 if !ARGV[0] || !ARGV[1]
@@ -39,5 +34,5 @@ if !ARGV[0] || !ARGV[1]
 elsif !LearnGenerate::TemplateMaker::TEMPLATES.include?(ARGV[0])
   puts my_banner
 else
-  LearnGenerate::TemplateMaker.run(ARGV[0], ARGV[1], git)
+  LearnGenerate::TemplateMaker.run(ARGV[0], ARGV[1])
 end
