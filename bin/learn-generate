@@ -10,7 +10,7 @@ OptionParser.new do |opts|
     options[:list] = true
   end
 
-  opts.on('--internet', 'Set internet connection to true/false') do |i|
+  opts.on('--internet', 'Perform actions with an internet connection') do |i|
     options[:internet] = i
   end
 end.parse!
@@ -20,15 +20,17 @@ known_templates = template_loader.templates
 templates_list  = template_loader.printable_list
 
 my_banner = <<-EOS
+
   Usage: learn generate <lab-name> -t <template-name>
 
   Available templates:
+
   #{templates_list}
 EOS
 
 if !ARGV[0] || !ARGV[1]
   puts my_banner
-elsif !LearnGenerate::TemplateMaker::TEMPLATES.include?(ARGV[0])
+elsif !known_templates.include?(ARGV[0])
   puts my_banner
 else
   LearnGenerate::TemplateMaker.run(ARGV[0], ARGV[1])

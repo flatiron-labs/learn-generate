@@ -29,7 +29,7 @@ module LearnGenerate
     def printable_list
       templates.map.with_index do |template, index|
         "#{index+1}. #{template}"
-      end.join("\n")
+      end.join("\n  ")
     end
 
     private
@@ -40,7 +40,7 @@ module LearnGenerate
           get_and_update_templates
         else
           prep_local_copy
-          get_and_update_templates
+          get_and_update_templates(silent: true)
         end
       elsif has_local_copy?
         update_local_templates
@@ -59,16 +59,18 @@ module LearnGenerate
     end
 
     def clone_templates_repo
+      puts 'Pulling list of known templates...'
       system("cd #{local_dir} && git clone https://github.com/learn-co-curriculum/learn-generate-templates.git templates")
     end
 
-    def get_and_update_templates
-      get_latest_templates
+    def get_and_update_templates(silent: false)
+      get_latest_templates(silent: silent)
       update_local_templates
     end
 
-    def get_latest_templates
-      system("cd #{local_path} && git pull --rebase")
+    def get_latest_templates(silent: false)
+      puts 'Updating templates...' if !silent
+      system("cd #{local_path} && git pull --rebase --quiet")
     end
 
     def update_local_templates

@@ -4,20 +4,6 @@ module LearnGenerate
     include LearnGenerate::Helpers::GemfileHelper
     include LearnGenerate::Helpers::DotLearnHelper
 
-    TEMPLATES = [
-      "fundamental-ruby",
-      "command-line",
-      "sql",
-      "activerecord",
-      "rake",
-      "rack",
-      "sinatra-classic",
-      "sinatra-mvc",
-      "js",
-      "front-end",
-      "kids"
-    ]
-
     attr_reader :template_type, :lab_name
 
     def initialize(template_type, lab_name)
