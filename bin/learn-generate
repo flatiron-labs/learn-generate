@@ -2,32 +2,29 @@
 
 require 'learn_generate'
 
-my_banner = <<-EOS
-  Usage: flatiron-lab-generator <template-type> <lab-name>
 
-  What is does: Creates a template for the type of lab specified. The template is created in the directory you call the gem in. Note that an empty git repo is initialized at creation, so be careful. #{"\u270B".encode("utf-8")}
-
-  Template format: <template-type> (separated by dashes)
-  Lab name format: <lab-name> (separated by dashes)
-
-  Available templates:
-  1. fundamental-ruby
-  2. command-line
-  3. SQL
-  4. activerecord
-  5. rake
-  6. erb-static-site
-  7. rack
-  8. sinatra-classic 
-  9. sinatra-mvc
-  10. js
-  11. front-end
-  12. kids
-EOS
+options = {}
 
 OptionParser.new do |opts|
-  opts.banner = my_banner
+  opts.on('--list', 'List known templates') do |l|
+    options[:list] = true
+  end
+
+  opts.on('--internet', 'Set internet connection to true/false') do |i|
+    options[:internet] = i
+  end
 end.parse!
+
+template_loader = LearnGenerate::TemplateLoader.new(options[:internet])
+known_templates = template_loader.templates
+templates_list  = template_loader.printable_list
+
+my_banner = <<-EOS
+  Usage: learn generate <lab-name> -t <template-name>
+
+  Available templates:
+  #{templates_list}
+EOS
 
 if !ARGV[0] || !ARGV[1]
   puts my_banner
