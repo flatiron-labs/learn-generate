@@ -4,11 +4,15 @@ module LearnGenerate
     include LearnGenerate::Helpers::GemfileHelper
     include LearnGenerate::Helpers::DotLearnHelper
 
-    attr_reader :template_type, :lab_name
+    attr_reader :template_type, :lab_name, :has_templates_dir, :full_templates_path
 
     def initialize(template_type, lab_name)
       @template_type = template_type
       @lab_name = lab_name
+      templates_path     = File.expand_path('~/.learn-generate/templates')
+      templates_git_path = File.expand_path('~/.learn-generate/templates/.git')
+      @has_templates_dir = File.exists?(templates_path) && File.directory?(templates_path) && File.exists?(templates_git_path) && File.directory?(templates_git_path)
+      @full_templates_path = templates_path + '/templates'
     end
 
     def self.run(template_type, lab_name)
@@ -39,7 +43,11 @@ module LearnGenerate
     end
 
     def copy
-      FileUtils.cp_r(LearnGenerate::FileFinder.location_to_dir("../templates/#{template_type}"), FileUtils.pwd)
+      if has_templates_dir
+        FileUtils.cp_r("#{full_templates_path}/#{template_type}", FileUtils.pwd)
+      else
+        FileUtils.cp_r(LearnGenerate::FileFinder.location_to_dir("../templates/#{template_type}"), FileUtils.pwd)
+      end
     end
 
     def name_lab
