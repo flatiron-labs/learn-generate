@@ -11,7 +11,7 @@ OptionParser.new do |opts|
   end
 
   opts.on('--internet', 'Perform actions with an internet connection') do |i|
-    options[:internet] = i
+    options[:internet] = true
   end
 end.parse!
 
@@ -28,7 +28,13 @@ my_banner = <<-EOS
   #{templates_list}
 EOS
 
-if !ARGV[0] || !ARGV[1]
+if options[:list]
+  puts <<-EOS
+  Available templates:
+
+  #{templates_list}
+  EOS
+elsif !ARGV[0] || !ARGV[1]
   puts my_banner
 elsif !known_templates.include?(ARGV[0])
   puts my_banner
