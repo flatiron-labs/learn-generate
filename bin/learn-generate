@@ -39,5 +39,9 @@ elsif !ARGV[0] || !ARGV[1]
 elsif !known_templates.include?(ARGV[0])
   puts my_banner
 else
-  LearnGenerate::TemplateMaker.run(ARGV[0], ARGV[1])
+  if !File.exists?(ARGV[1])
+    LearnGenerate::TemplateMaker.run(ARGV[0], ARGV[1])
+  else
+    puts "#{ARGV[1]} already exists in this directory. Please specify a new lab name."
+  end
 end
