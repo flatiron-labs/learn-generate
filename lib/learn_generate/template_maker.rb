@@ -23,11 +23,11 @@ module LearnGenerate
       copy
       name_lab
       FileUtils.cd("#{lab_name}") do
-        touch_spec unless template_type == "js" || template_type == "sinatra-mvc" || template_type == "front-end"
+        touch_spec unless ['js', 'sinatra-mvc', 'front-end', 'python'].include?(template_type)
         touch_dot_learn
         build_dot_learn
         git_init
-        bundle_init unless template_type == "js" || template_type == "front-end"
+        bundle_init unless ['js', 'front-end', 'python'].include?(template_type)
         edit_readme
         fundamental_helper if template_type == "fundamental-ruby"
         command_line_helper if template_type == "command-line"
