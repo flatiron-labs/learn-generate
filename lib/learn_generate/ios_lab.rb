@@ -6,10 +6,12 @@
       # DONE 5. restore .liftoffrc && .liftoff (if necessary)
 module LearnGenerate
   class IosLab
-    attr_reader :liftoff_installed, :liftoffrc_exists, :liftoff_dir_exists,
-                :liftoff_backup, :full_templates_path, :has_templates_dir
+    attr_reader :lab_name, :liftoff_installed, :liftoffrc_exists,
+                :liftoff_dir_exists, :liftoff_backup, :full_templates_path,
+                :has_templates_dir
 
-    def initialize
+    def initialize(lab_name)
+      @lab_name = lab_name
       @liftoff_installed = !(`brew ls --versions liftoff 2>/dev/null`.strip.empty?)
       @liftoffrc_exists = File.exists?('.liftoffrc')
       @liftoff_dir_exists = File.exists?('.liftoff')
@@ -24,7 +26,7 @@ module LearnGenerate
       exit_if_no_liftoff
       backup_if_necessary
       copy_settings_files
-      system('liftoff')
+      system("liftoff -n #{lab_name}")
       restore_if_necessary
     end
 
@@ -41,7 +43,7 @@ module LearnGenerate
     end
 
     def restore_if_necessary
-      if liftoff_settings_file_exist?
+      if liftoff_settings_files_exist?
         liftoff_backup.restore
       end
     end
@@ -52,9 +54,9 @@ module LearnGenerate
 
     def copy_settings_files
       if has_templates_dir
-        FileUtils.cp_r("#{full_templates_path}/ios/", FileUtils.pwd)
+        `cp -a #{full_templates_path}/ios/. #{FileUtils.pwd}`
       else
-        FileUtils.cp_r(LearnGenerate::FileFinder.location_to_dir('../templates/ios/'), FileUtils.pwd)
+        `cp -a #{LearnGenerate::FileFinder.location_to_dir('../templates/ios')}/. #{FileUtils.pwd}`
       end
     end
   end

@@ -48,7 +48,7 @@ module LearnGenerate
     end
 
     def create_ios_lab
-      LearnGenerate::IosLab.new.execute
+      LearnGenerate::IosLab.new(lab_name).execute
     end
 
     def copy
