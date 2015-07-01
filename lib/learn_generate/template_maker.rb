@@ -20,26 +20,35 @@ module LearnGenerate
     end
 
     def create
-      copy
-      name_lab
-      FileUtils.cd("#{lab_name}") do
-        touch_spec unless ['js', 'sinatra-mvc', 'front-end', 'python'].include?(template_type)
-        touch_dot_learn
-        build_dot_learn
-        git_init
-        bundle_init unless ['js', 'front-end', 'python'].include?(template_type)
-        edit_readme
-        fundamental_helper if template_type == "fundamental-ruby"
-        command_line_helper if template_type == "command-line"
-        sql_helper if template_type == "SQL"
-        rake_helper if template_type == "rake"
-        sinatra_mvc_helper if template_type == "sinatra-mvc"
-        sinatra_classic_helper if template_type == "sinatra-classic"
-        js_helper if template_type == "js"
-        fe_helper if template_type == "front-end"
-        kids_helper if template_type == "kids"
+      if template_type != 'ios'
+        copy
+        name_lab
+        FileUtils.cd("#{lab_name}") do
+          touch_spec unless ['js', 'sinatra-mvc', 'front-end', 'python'].include?(template_type)
+          touch_dot_learn
+          build_dot_learn
+          git_init
+          bundle_init unless ['js', 'front-end', 'python'].include?(template_type)
+          edit_readme
+          fundamental_helper if template_type == "fundamental-ruby"
+          command_line_helper if template_type == "command-line"
+          sql_helper if template_type == "SQL"
+          rake_helper if template_type == "rake"
+          sinatra_mvc_helper if template_type == "sinatra-mvc"
+          sinatra_classic_helper if template_type == "sinatra-classic"
+          js_helper if template_type == "js"
+          fe_helper if template_type == "front-end"
+          kids_helper if template_type == "kids"
+        end
+      else
+        create_ios_lab
       end
+
       success_message
+    end
+
+    def create_ios_lab
+      LearnGenerate::IosLab.new.execute
     end
 
     def copy
