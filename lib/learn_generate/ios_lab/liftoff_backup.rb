@@ -7,7 +7,6 @@ module LearnGenerate
       end
 
       def restore
-        `rm -rf .listoff .liftoffrc`
         `mv .liftoffrc{.bak,}`
         `mv .liftoff{.bak,}`
       end

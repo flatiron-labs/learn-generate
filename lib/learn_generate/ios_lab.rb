@@ -43,6 +43,8 @@ module LearnGenerate
     end
 
     def restore_if_necessary
+      `rm -rf .liftoff .liftoffrc`
+
       if liftoff_settings_files_exist?
         liftoff_backup.restore
       end
