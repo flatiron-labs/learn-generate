@@ -13,8 +13,8 @@ module LearnGenerate
     def initialize(lab_name)
       @lab_name = lab_name
       @liftoff_installed = !(`brew ls --versions liftoff 2>/dev/null`.strip.empty?)
-      @liftoffrc_exists = File.exists?('.liftoffrc')
-      @liftoff_dir_exists = File.exists?('.liftoff')
+      @liftoffrc_exists = File.exists?(File.expand_path('~/.liftoffrc'))
+      @liftoff_dir_exists = File.exists?(File.expand_path('~/.liftoff'))
       @liftoff_backup = LearnGenerate::IosLab::LiftoffBackup.new
       templates_path     = File.expand_path('~/.learn-generate/templates')
       templates_git_path = File.expand_path('~/.learn-generate/templates/.git')
@@ -43,7 +43,7 @@ module LearnGenerate
     end
 
     def restore_if_necessary
-      `rm -rf .liftoff .liftoffrc`
+      `rm -rf ~/.liftoff ~/.liftoffrc`
 
       if liftoff_settings_files_exist?
         liftoff_backup.restore
@@ -56,9 +56,9 @@ module LearnGenerate
 
     def copy_settings_files
       if has_templates_dir
-        `cp -a #{full_templates_path}/ios/. #{FileUtils.pwd}`
+        `cp -a #{full_templates_path}/ios/. ~/`
       else
-        `cp -a #{LearnGenerate::FileFinder.location_to_dir('../templates/ios')}/. #{FileUtils.pwd}`
+        `cp -a #{LearnGenerate::FileFinder.location_to_dir('../templates/ios')}/. ~/`
       end
     end
   end
