@@ -68,8 +68,17 @@ module LearnGenerate
     end
 
     def edit_readme
-      File.open("README.md", 'a') do |f|
-        f << "\n# #{formatted_name}"
+      if template_type == 'readme'
+        readme_contents = File.read('README.md')
+        readme_contents.sub!('## Objectives', "# #{formatted_name}\n\n## Objectives")
+
+        File.open('README.md', 'w+') do |f|
+          f.write(readme_contents)
+        end
+      else
+        File.open('README.md', 'a') do |f|
+          f << "\n# #{formatted_name}"
+        end
       end
     end
 
