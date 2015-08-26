@@ -12,43 +12,44 @@ Visit [http://gems.flatironschool.com/](http://gems.flatironschool.com/)
 
 ## Usage
 
-`flatiron-lab-generator <lab-type> <lab-name>`
+`learn new <lab-name> -t|--template <template-name>`
 
-### With git
+## Lab Templates
 
-Execute as `flatiron-lab-generator <lab-type> <lab-name> -g` if you want your template to be created with an initialized git repository.
+The current list of templates is:
 
-## Lab Types
-
-Lab types have been outlined in the [Curriculum Style Guide](https://github.com/learn-co-curriculum/curriculum-style-guide/blob/master/lab-templates.md)
-
-These are the Lab Types:
-
-* fundamental-ruby
-* command-line
-* SQL
 * activerecord
-* rake
+* command-line
+* front-end
+* fundamental-ruby
+* ios
+* js
+* kids
+* python
 * rack
+* rake
+* readme
 * sinatra-classic
 * sinatra-mvc
-* js
-* front-end
-* kids
+* sql
 
-We have the [flatiron-rails gem](https://github.com/flatiron-school/flatiron-rails) for generating Rails labs.
+## Other Options
 
-## Lab Name
-
-The lab-name refers to the name of the lab (example: Sinatra-ORM-Halloween).
-
-## Reposit
-
-Logan made an awesome gem that creates a remote git repository from the command line. It's called [Reposit](https://github.com/loganhasson/reposit). After installing that and following the setup steps, run `reposit <lab name> -o learn-co-curriculum`.
+1. `--list`: see the most up-to-date list of available templates
 
 ## Contributing
 
-1. Clone
-2. Checkout a new feature branch
-3. Be sure to run the tests
-4. Open PR
+1. Fork it ( https://github.com/flatiron-labs/learn-generate/fork )
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create a new Pull Request
+
+## Contributing new templates
+
+1. Fork the templates repository ( https://github.com/learn-co-curriculum/learn-generate-templates/fork )
+2. Create your new template branch (git checkout -b my-new-template)
+3. Commit your changes (git commit -am 'Add a new teamplate')
+4. Push to the branch (git push origin my-new-template)
+5. Create a new Pull Request
+6. Your template will be reviewed, and any relevant changes to the gem will be made before merging
