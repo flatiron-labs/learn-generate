@@ -8,7 +8,7 @@ Assumes installation of git.
 
 ## Installation
 
-Visit [http://gems.flatironschool.com/](http://gems.flatironschool.com/)
+`gem install learn-co`
 
 ## Usage
 
