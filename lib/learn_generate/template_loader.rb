@@ -12,10 +12,12 @@ module LearnGenerate
       'erb-static-site',
       'rack',
       'sinatra-classic',
+      'sinatra-classic-db',
       'sinatra-mvc',
       'js',
       'front-end',
-      'kids'
+      'kids',
+      'readme'
     ]
 
     def initialize(internet)
