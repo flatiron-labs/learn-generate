@@ -1,9 +1,3 @@
-      # TODO:
-      # DONE 1. check for liftoff -> brew ls --versions liftoff (if not installed, instruct user to run brew tap thoughtbot/formulae && brew install liftoff)
-      # DONE 2. if there is a .liftoffrc || .liftoff file/dir, backup
-      # DONE 3. copy either bundled template or in templates_dir
-      # DONE 4. run liftoff
-      # DONE 5. restore .liftoffrc && .liftoff (if necessary)
 module LearnGenerate
   class IosLab
     attr_reader :lab_name, :liftoff_installed, :liftoffrc_exists,
