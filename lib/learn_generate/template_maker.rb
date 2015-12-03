@@ -39,6 +39,7 @@ module LearnGenerate
           js_helper if template_type == "js"
           fe_helper if template_type == "front-end"
           kids_helper if template_type == "kids"
+          add_link_to_learn
         end
       else
         create_ios_lab
@@ -68,17 +69,11 @@ module LearnGenerate
     end
 
     def edit_readme
-      if template_type == 'readme'
-        readme_contents = File.read('README.md')
-        readme_contents.sub!('## Objectives', "# #{formatted_name}\n\n## Objectives")
+      readme_contents = File.read('README.md')
+      readme_contents.sub!('## Objectives', "# #{formatted_name}\n\n## Objectives")
 
-        File.open('README.md', 'w+') do |f|
-          f.write(readme_contents)
-        end
-      else
-        File.open('README.md', 'a') do |f|
-          f << "\n# #{formatted_name}"
-        end
+      File.open('README.md', 'w+') do |f|
+        f.write(readme_contents)
       end
     end
 
@@ -127,6 +122,12 @@ module LearnGenerate
         if !tree_output.empty?
           puts "#{`tree`}"
         end
+      end
+    end
+
+    def add_link_to_learn
+      File.open('README.md', 'a') do |f|
+        f << "\n<a href='https://learn.co/lessons/#{lab_name}' data-visibility='hidden'>View this lesson on Learn.co</a>\n"
       end
     end
   end
