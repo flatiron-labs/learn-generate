@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["learn@flatironschool.com"]
   spec.summary       = %q{A lab generator}
   spec.description   = %q{Generates labs for Learn.co based on a set of lab templates}
-  spec.homepage      = "https://learn.co"
+  spec.homepage      = "https://github.com/learn-co/learn-generate"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
