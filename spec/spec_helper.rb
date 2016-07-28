@@ -1,4 +1,5 @@
-require_relative '../config/environment'
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'learn_generate'
 
 RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
@@ -8,5 +9,5 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = 'random'
+  config.order = 'default'
 end
